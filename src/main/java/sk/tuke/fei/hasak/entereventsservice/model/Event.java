@@ -23,9 +23,4 @@ public class Event {
     @Column(name = "event_time", nullable = false)
     private LocalDateTime eventTime;
 
-//    public Event(String message, String email, LocalDateTime eventTime) {
-//        this.message = message;
-//        this.email = email;
-//        this.eventTime = eventTime;
-//    }
 }
