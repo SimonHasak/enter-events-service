@@ -1,5 +1,13 @@
-package sk.tuke.fei.entereventsservice.exception;
+/*
+ * Copyright (c) 2019 Šimon Hašák.
+ * All rights reserved.
+ */
 
+package sk.tuke.fei.hasak.entereventsservice.exception;
+
+/**
+ * @author Šimon Hašák
+ */
 public class EventNotFoundException extends Exception {
 
     public EventNotFoundException() {}

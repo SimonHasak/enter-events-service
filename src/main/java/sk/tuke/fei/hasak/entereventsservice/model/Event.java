@@ -1,10 +1,18 @@
-package sk.tuke.fei.entereventsservice.model;
+/*
+ * Copyright (c) 2019 Šimon Hašák.
+ * All rights reserved.
+ */
+
+package sk.tuke.fei.hasak.entereventsservice.model;
 
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+/**
+ * @author Šimon Hašák
+ */
 @Entity
 @Data
 @Table(name = "events")

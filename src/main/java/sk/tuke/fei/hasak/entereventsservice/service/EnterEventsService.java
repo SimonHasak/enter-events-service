@@ -1,13 +1,21 @@
-package sk.tuke.fei.entereventsservice.service;
+/*
+ * Copyright (c) 2019 Šimon Hašák.
+ * All rights reserved.
+ */
+
+package sk.tuke.fei.hasak.entereventsservice.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import sk.tuke.fei.entereventsservice.exception.EventNotFoundException;
-import sk.tuke.fei.entereventsservice.model.Event;
-import sk.tuke.fei.entereventsservice.repository.EnterEventsRepository;
+import sk.tuke.fei.hasak.entereventsservice.exception.EventNotFoundException;
+import sk.tuke.fei.hasak.entereventsservice.model.Event;
+import sk.tuke.fei.hasak.entereventsservice.repository.EnterEventsRepository;
 
 import java.util.Optional;
 
+/**
+ * @author Šimon Hašák
+ */
 @Service
 @RequiredArgsConstructor
 public class EnterEventsService {
