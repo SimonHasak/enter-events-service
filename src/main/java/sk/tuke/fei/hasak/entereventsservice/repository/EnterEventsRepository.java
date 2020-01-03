@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 import sk.tuke.fei.hasak.entereventsservice.model.Event;
 
 /**
+ * The interface Enter events repository.
+ *
  * @author Šimon Hašák
  */
 @Repository
