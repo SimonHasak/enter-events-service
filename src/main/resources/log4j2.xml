@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="WARN" monitorInterval="30" shutdownHook="disable">
+
+    <Properties>
+        <Property name="baseDir">logs</Property>
+        <Property name="applicationName">enter-events-service</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="STDOUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <File name="FILE" fileName="${baseDir}/app.log" append="false">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <!--<RollingFile-->
+                <!--name="RollingFile"-->
+                <!--fileName="${baseDir}/${applicationName}.log"-->
+                <!--filePattern="${baseDir}/${applicationName}.%d{yyyy-MM-dd}-%i.log">-->
+            <!--<PatternLayout pattern="%-5p|%d{ISO8601}{GMT}|%X{token}|%c{1}|%X{Principal}|%m%ex%n" />-->
+            <!--<Policies>-->
+                <!--<OnStartupTriggeringPolicy />-->
+                <!--<SizeBasedTriggeringPolicy size="20 MB" />-->
+                <!--<TimeBasedTriggeringPolicy />-->
+            <!--</Policies>-->
+            <!--<DefaultRolloverStrategy max="10">-->
+                <!--<Delete basePath="${baseDir}">-->
+                    <!--<IfFileName glob="${applicationName}.*.log">-->
+                        <!--<IfAny>-->
+                            <!--<IfAccumulatedFileSize exceeds="200 MB" />-->
+                            <!--<IfAccumulatedFileCount exceeds="10" />-->
+                        <!--</IfAny>-->
+                    <!--</IfFileName>-->
+                <!--</Delete>-->
+            <!--</DefaultRolloverStrategy>-->
+            <!--<RegexFilter regex=".*@ConfigurationProperties.*"-->
+                         <!--onMatch="DENY"-->
+                         <!--onMismatch="ACCEPT" />-->
+        <!--</RollingFile>-->
+
+        <!--<Gelf name="GELF"-->
+              <!--host="tcp:localhost"-->
+              <!--port="12201"-->
+              <!--version="1.1"-->
+              <!--extractStackTrace="true"-->
+              <!--filterStackTrace="true"-->
+              <!--mdcProfiling="true"-->
+              <!--includeFullMdc="true"-->
+              <!--maximumMessageSize="8192"-->
+              <!--originHost="%host"-->
+              <!--ignoreExceptions="true">-->
+            <!--<Field name="timestamp" pattern="%d{dd MMM yyyy HH:mm:ss,SSS}" />-->
+            <!--<Field name="level" pattern="%level" />-->
+            <!--<Field name="simpleClassName" pattern="%C{1}" />-->
+            <!--<Field name="className" pattern="%C" />-->
+            <!--<Field name="server" pattern="%host" />-->
+            <!--<Field name="server.fqdn" pattern="%host{fqdn}" />-->
+
+            <!--<Field name="application" literal="${applicationName}" />-->
+        <!--</Gelf>-->
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="FILE"/>
+            <!--<AppenderRef ref="GELF"/>-->
+        </Root>
+
+        <Logger name="sk.tuke.fei.hasak" level="DEBUG" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="FILE"/>
+        </Logger>
+        <Logger name="org.springframework" level="WARN" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="FILE"/>
+        </Logger>
+
+    </Loggers>
+
+
+    <!--<Loggers>-->
+        <!--<Root level="WARN">-->
+            <!--<AppenderRef ref="RollingFile" />-->
+            <!--<AppenderRef ref="gelf" />-->
+        <!--</Root>-->
+        <!--<Logger name="org.springframework"-->
+                <!--level="WARN" />-->
+        <!--<Logger name="com.my.app"-->
+                <!--level="INFO" />-->
+    <!--</Loggers>-->
+</Configuration>
