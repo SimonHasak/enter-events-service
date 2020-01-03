@@ -6,16 +6,32 @@
 package sk.tuke.fei.hasak.entereventsservice.exception;
 
 /**
+ * The type Event not found exception.
+ *
  * @author Šimon Hašák
  */
 public class EventNotFoundException extends Exception {
 
+    /**
+     * Instantiates a new Event not found exception.
+     */
     public EventNotFoundException() {}
 
+    /**
+     * Instantiates a new Event not found exception.
+     *
+     * @param message the message
+     */
     public EventNotFoundException(String message) {
         super(message);
     }
 
+    /**
+     * Instantiates a new Event not found exception.
+     *
+     * @param message the message
+     * @param cause   the cause
+     */
     public EventNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
