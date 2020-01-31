@@ -1,19 +1,19 @@
-2020-01-02 15:59:47.412 [main] INFO  sk.tuke.fei.hasak.entereventsservice.EnterEventsServiceApplication - Starting EnterEventsServiceApplication on simon with PID 11070 (/home/simon/School/bakalarka/microservices/enter-events-service/target/classes started by simon in /home/simon/School/bakalarka/microservices/enter-events-service)
-2020-01-02 15:59:47.426 [main] DEBUG sk.tuke.fei.hasak.entereventsservice.EnterEventsServiceApplication - Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
-2020-01-02 15:59:47.428 [main] INFO  sk.tuke.fei.hasak.entereventsservice.EnterEventsServiceApplication - No active profile set, falling back to default profiles: default
-2020-01-02 15:59:49.127 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2020-01-02 15:59:49.128 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2020-01-02 15:59:49.129 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
-2020-01-02 15:59:49.230 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2020-01-02 15:59:49.413 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-01-02 15:59:49.487 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.8.Final}
-2020-01-02 15:59:49.597 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-01-02 15:59:49.693 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2020-01-02 15:59:49.771 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2020-01-02 15:59:49.787 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2020-01-02 15:59:50.478 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-01-02 15:59:50.806 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-01-02 15:59:51.900 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2020-01-02 15:59:51.922 [main] INFO  sk.tuke.fei.hasak.entereventsservice.EnterEventsServiceApplication - Started EnterEventsServiceApplication in 5.1 seconds (JVM running for 6.514)
-2020-01-02 16:00:15.767 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2020-01-02 16:00:15.777 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2020-01-31 18:40:15.760 [main] INFO  sk.tuke.fei.hasak.entereventsservice.EnterEventsServiceApplication - Starting EnterEventsServiceApplication on simon with PID 9518 (/home/simon/School/bakalarka/microservices/enter-events-service/target/classes started by simon in /home/simon/School/bakalarka/microservices/enter-events-service)
+2020-01-31 18:40:15.770 [main] DEBUG sk.tuke.fei.hasak.entereventsservice.EnterEventsServiceApplication - Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2020-01-31 18:40:15.771 [main] INFO  sk.tuke.fei.hasak.entereventsservice.EnterEventsServiceApplication - No active profile set, falling back to default profiles: default
+2020-01-31 18:40:17.768 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-01-31 18:40:17.769 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-01-31 18:40:17.770 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-01-31 18:40:17.878 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-01-31 18:40:18.068 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-31 18:40:18.164 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.8.Final}
+2020-01-31 18:40:18.326 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-31 18:40:18.438 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2020-01-31 18:40:18.508 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2020-01-31 18:40:18.520 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2020-01-31 18:40:19.229 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-31 18:40:19.590 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-31 18:40:20.572 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-01-31 18:40:20.589 [main] INFO  sk.tuke.fei.hasak.entereventsservice.EnterEventsServiceApplication - Started EnterEventsServiceApplication in 5.207 seconds (JVM running for 6.154)
+2020-01-31 18:45:04.644 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2020-01-31 18:45:04.650 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
