@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Data
-@Table(name = "events")
+@Table(name = "enter_events_tb")
 public class Event extends RepresentationModel<Event> {
 
     @Id
@@ -31,7 +31,7 @@ public class Event extends RepresentationModel<Event> {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "event_time", nullable = false)
+    @Column(name = "time", nullable = false)
     private LocalDateTime eventTime;
 
 }
