@@ -7,8 +7,11 @@ package sk.tuke.fei.hasak.entereventsservice.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import sk.tuke.fei.hasak.entereventsservice.exception.EventNotFoundException;
+import sk.tuke.fei.hasak.entereventsservice.kafka.Producer;
 import sk.tuke.fei.hasak.entereventsservice.model.Event;
 import sk.tuke.fei.hasak.entereventsservice.repository.EnterEventsRepository;
 
@@ -20,12 +23,17 @@ import java.util.Optional;
  * @author Šimon Hašák
  */
 @Slf4j
-@RequiredArgsConstructor
 @Service
 public class EnterEventsService {
 
     private final EnterEventsRepository eventsRepository;
 
+    private final Producer producer;
+
+    public EnterEventsService(EnterEventsRepository eventsRepository, Producer producer) {
+        this.eventsRepository = eventsRepository;
+        this.producer = producer;
+    }
 
     /**
      * Find all iterable events.
@@ -60,7 +68,13 @@ public class EnterEventsService {
     public Event save(Event event) {
         Event savedEvent = eventsRepository.save(event);
 
+        System.out.println(savedEvent.getTime());
+
         log.info("[Enter-event-service] Event with id: {} saved", savedEvent.getId());
+
+
+
+        producer.sendSavedEventMssg("Event with id " + event.getId() + " was saved.");
 
         return savedEvent;
     }
