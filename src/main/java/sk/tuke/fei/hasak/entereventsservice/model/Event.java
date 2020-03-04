@@ -5,10 +5,12 @@
 
 package sk.tuke.fei.hasak.entereventsservice.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
 
 /**
@@ -28,10 +30,12 @@ public class Event extends RepresentationModel<Event> {
     @Column(name = "message", nullable = false)
     private String message;
 
+    @Email
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "time", nullable = false)
-    private LocalDateTime eventTime;
-
+//    @Transient
+//    @JsonInclude
+//    @Column(name = "time", nullable = false)
+    private LocalDateTime time;
 }
