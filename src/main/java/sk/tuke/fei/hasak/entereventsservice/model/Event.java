@@ -5,7 +5,6 @@
 
 package sk.tuke.fei.hasak.entereventsservice.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -34,8 +33,6 @@ public class Event extends RepresentationModel<Event> {
     @Column(name = "email", nullable = false)
     private String email;
 
-//    @Transient
-//    @JsonInclude
-//    @Column(name = "time", nullable = false)
+    @Transient
     private LocalDateTime time;
 }
