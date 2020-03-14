@@ -10,19 +10,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class Producer {
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, Foo> kafkaTemplate;
 
-    @Value("${saved.event.topic}")
+    @Value("${send.mssg.to.notify.service}")
     private String topic;
 
     @Autowired
-    public Producer(KafkaTemplate<String, String> kafkaTemplate) {
+    public Producer(KafkaTemplate<String, Foo> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendSavedEventMssg(String message) {
-        this.kafkaTemplate.send(topic, message);
-        log.info("[Enter events service] message was sent.");
+    public void sendSavedEventMssg(Foo foo) {
+        log.info("[Enter events service] sending='{}'.", foo);
+        this.kafkaTemplate.send(topic, foo);
     }
 
 }
