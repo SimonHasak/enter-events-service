@@ -5,13 +5,11 @@
 
 package sk.tuke.fei.hasak.entereventsservice.service;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import sk.tuke.fei.hasak.entereventsservice.exception.EventNotFoundException;
-import sk.tuke.fei.hasak.entereventsservice.kafka.Producer;
+import sk.tuke.fei.hasak.entereventsservice.kafka.SavedEventMessageProducer;
+import sk.tuke.fei.hasak.entereventsservice.kafka.SavedEventMessage;
 import sk.tuke.fei.hasak.entereventsservice.model.Event;
 import sk.tuke.fei.hasak.entereventsservice.repository.EnterEventsRepository;
 
@@ -28,11 +26,11 @@ public class EnterEventsService {
 
     private final EnterEventsRepository eventsRepository;
 
-    private final Producer producer;
+    private final SavedEventMessageProducer savedEventMessageProducer;
 
-    public EnterEventsService(EnterEventsRepository eventsRepository, Producer producer) {
+    public EnterEventsService(EnterEventsRepository eventsRepository, SavedEventMessageProducer savedEventMessageProducer) {
         this.eventsRepository = eventsRepository;
-        this.producer = producer;
+        this.savedEventMessageProducer = savedEventMessageProducer;
     }
 
     /**
@@ -66,15 +64,12 @@ public class EnterEventsService {
      * @return the event
      */
     public Event save(Event event) {
-        Event savedEvent = eventsRepository.save(event);
 
-        System.out.println(savedEvent.getTime());
+        Event savedEvent = eventsRepository.save(event);
 
         log.info("[Enter-event-service] Event with id: {} saved", savedEvent.getId());
 
-
-
-        producer.sendSavedEventMssg("Event with id " + event.getId() + " was saved.");
+        savedEventMessageProducer.sendSavedEventMessage(new SavedEventMessage(savedEvent.getId(), savedEvent.getTime()));
 
         return savedEvent;
     }
