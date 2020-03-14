@@ -8,21 +8,21 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class Producer {
+public class SavedEventMessageProducer {
 
-    private final KafkaTemplate<String, Foo> kafkaTemplate;
+    private final KafkaTemplate<String, SavedEventMessage> kafkaTemplate;
 
-    @Value("${send.mssg.to.notify.service}")
+    @Value("${kafka.saved.event}")
     private String topic;
 
     @Autowired
-    public Producer(KafkaTemplate<String, Foo> kafkaTemplate) {
+    public SavedEventMessageProducer(KafkaTemplate<String, SavedEventMessage> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendSavedEventMssg(Foo foo) {
-        log.info("[Enter events service] sending='{}'.", foo);
-        this.kafkaTemplate.send(topic, foo);
+    public void sendSavedEventMessage(SavedEventMessage event) {
+        log.info("[Enter events service] sending='{}'.", event);
+        this.kafkaTemplate.send(topic, event);
     }
 
 }
