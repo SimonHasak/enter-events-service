@@ -5,12 +5,13 @@
 
 package sk.tuke.fei.hasak.entereventsservice.model;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
+
 
 /**
  * The type Event.
@@ -18,7 +19,11 @@ import java.time.LocalDateTime;
  * @author Šimon Hašák
  */
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "enter_events_tb")
 public class Event extends RepresentationModel<Event> {
 
