@@ -44,7 +44,7 @@ public class EnterEventsController {
     public CollectionModel<EntityModel<Event>> findAll() {
         List<EntityModel<Event>> events = StreamSupport.stream(eventsService.findAll().spliterator(), false)
                 .map(event -> new EntityModel<>(event,
-                        linkTo(methodOn(EnterEventsController.class).findById(event.getId())).withSelfRel(),
+                        linkTo(methodOn(EnterEventsController.class).findById(event.getMessageId())).withSelfRel(),
                         linkTo(EnterEventsController.class).withSelfRel()))
                 .collect(Collectors.toList());
 
@@ -59,14 +59,14 @@ public class EnterEventsController {
      */
     @SneakyThrows
     @GetMapping("/{id}")
-    public EntityModel<Event> findById(@PathVariable Long id) {
+    public Event findById(@PathVariable long id) {
 
         Event event = eventsService.findById(id);
 
-        event.add(linkTo(methodOn(EnterEventsController.class).findById(event.getId())).withSelfRel(),
+        event.add(linkTo(methodOn(EnterEventsController.class).findById(event.getMessageId())).withSelfRel(),
                 linkTo(EnterEventsController.class).withSelfRel());
 
-        return new EntityModel<>(event);
+        return event;
     }
 
     /**
@@ -79,7 +79,7 @@ public class EnterEventsController {
     public EntityModel<Event> save(@RequestBody Event event) {
         Event savedEvent = eventsService.save(event);
 
-        savedEvent.add(linkTo(methodOn(EnterEventsController.class).findById(event.getId())).withSelfRel(),
+        savedEvent.add(linkTo(methodOn(EnterEventsController.class).findById(event.getMessageId())).withSelfRel(),
                 linkTo(EnterEventsController.class).withSelfRel());
 
         return new EntityModel<>(savedEvent);
@@ -93,10 +93,10 @@ public class EnterEventsController {
      */
     @SneakyThrows
     @PutMapping("/{id}")
-    public EntityModel<Event> update(@RequestBody Event event, @PathVariable Long id) {
+    public EntityModel<Event> update(@RequestBody Event event, @PathVariable long id) {
         Event updatedEvent = eventsService.update(event, id);
 
-        updatedEvent.add(linkTo(methodOn(EnterEventsController.class).findById(updatedEvent.getId())).withSelfRel(),
+        updatedEvent.add(linkTo(methodOn(EnterEventsController.class).findById(updatedEvent.getMessageId())).withSelfRel(),
                 linkTo(EnterEventsController.class).withSelfRel());
 
         return new EntityModel<>(updatedEvent);
@@ -109,6 +109,6 @@ public class EnterEventsController {
      */
     @SneakyThrows
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) { eventsService.deleteById(id); }
+    public void delete(@PathVariable long id) { eventsService.deleteById(id); }
 
 }

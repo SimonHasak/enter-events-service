@@ -5,6 +5,7 @@
 
 package sk.tuke.fei.hasak.entereventsservice.service;
 
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import sk.tuke.fei.hasak.entereventsservice.exception.EventNotFoundException;
@@ -47,7 +48,7 @@ public class EnterEventsService {
      * @return the event
      * @throws EventNotFoundException the event not found exception
      */
-    public Event findById(Long id) throws EventNotFoundException {
+    public Event findById(long id) throws EventNotFoundException {
         Optional<Event> eventOptional = eventsRepository.findById(id);
 
         if (eventOptional.isEmpty()) {
@@ -63,13 +64,13 @@ public class EnterEventsService {
      * @param event the event to be saved.
      * @return the event
      */
-    public Event save(Event event) {
+    public Event save(@NonNull Event event) {
 
         Event savedEvent = eventsRepository.save(event);
 
-        log.info("[Enter-event-service] Event with id: {} saved", savedEvent.getId());
+        log.info("[Enter-event-service] Event with id: {} saved", savedEvent.getMessageId());
 
-        savedEventMessageProducer.sendSavedEventMessage(new SavedEventMessage(savedEvent.getId(), savedEvent.getTime()));
+        savedEventMessageProducer.sendSavedEventMessage(new SavedEventMessage(savedEvent.getMessageId(), savedEvent.getEmail(), savedEvent.getTime()));
 
         return savedEvent;
     }
@@ -81,7 +82,7 @@ public class EnterEventsService {
      * @param id    the id of old event to be updated by new one
      * @throws EventNotFoundException the event not found exception
      */
-    public Event update(Event event, Long id) throws EventNotFoundException{
+    public Event update(@NonNull Event event, long id) throws EventNotFoundException{
         Optional<Event> eventOptional = eventsRepository.findById(id);
 
         if (eventOptional.isEmpty()) {
@@ -90,7 +91,7 @@ public class EnterEventsService {
 
         log.info("[Enter-event-service] Event with id: {} updated", id);
 
-        event.setId(id);
+        event.setMessageId(id);
         eventsRepository.save(event);
 
         return event;
@@ -101,7 +102,7 @@ public class EnterEventsService {
      *
      * @param id the id
      */
-    public void deleteById(Long id) {
+    public void deleteById(long id) {
         log.info("[Enter-event-service] Event with id: {} deleted", id);
         eventsRepository.deleteById(id);
     }
