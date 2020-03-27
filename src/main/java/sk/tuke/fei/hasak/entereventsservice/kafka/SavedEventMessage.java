@@ -15,9 +15,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class SavedEventMessage {
 
-    private long id;
+    private long messageId;
+
+    private String email;
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
-    private LocalDateTime time = LocalDateTime.now();
+    private LocalDateTime messageTime = LocalDateTime.now();
 
 }
