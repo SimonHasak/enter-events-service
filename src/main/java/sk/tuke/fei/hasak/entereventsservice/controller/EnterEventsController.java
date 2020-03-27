@@ -59,14 +59,14 @@ public class EnterEventsController {
      */
     @SneakyThrows
     @GetMapping("/{id}")
-    public Event findById(@PathVariable long id) {
+    public EntityModel<Event> findById(@PathVariable long id) {
 
         Event event = eventsService.findById(id);
 
         event.add(linkTo(methodOn(EnterEventsController.class).findById(event.getMessageId())).withSelfRel(),
                 linkTo(EnterEventsController.class).withSelfRel());
 
-        return event;
+        return new EntityModel<>(event);
     }
 
     /**
