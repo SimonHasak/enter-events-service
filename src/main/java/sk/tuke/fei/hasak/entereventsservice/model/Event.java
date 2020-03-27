@@ -9,7 +9,6 @@ import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
 
 
@@ -28,14 +27,14 @@ import java.time.LocalDateTime;
 public class Event extends RepresentationModel<Event> {
 
     @Id
+    @Column(name = "message_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long messageId;
 
-    @Column(name = "message", nullable = false)
-    private String message;
+    @Column(name = "text", nullable = false)
+    private String text;
 
-    @Email
-    @Column(name = "email", nullable = false)
+    @Transient
     private String email;
 
     @Transient
