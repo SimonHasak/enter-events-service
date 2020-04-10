@@ -75,6 +75,7 @@ public class EnterEventsController {
      * @param event the event to be save.
      * @return the event
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping()
     public EntityModel<Event> save(@RequestBody Event event) {
         Event savedEvent = eventsService.save(event);
