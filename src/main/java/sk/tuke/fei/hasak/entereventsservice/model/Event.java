@@ -9,7 +9,6 @@ import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 
 /**
@@ -22,7 +21,6 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "enter_events_tb")
 public class Event extends RepresentationModel<Event> {
 
@@ -34,9 +32,7 @@ public class Event extends RepresentationModel<Event> {
     @Column(name = "text", nullable = false)
     private String text;
 
-    @Transient
-    private String email;
-
-    @Transient
-    private LocalDateTime time;
+    public Event(String text) {
+        this.text = text;
+    }
 }

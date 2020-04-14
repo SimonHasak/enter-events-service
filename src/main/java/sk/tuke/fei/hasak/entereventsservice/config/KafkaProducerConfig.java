@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
-import sk.tuke.fei.hasak.entereventsservice.kafka.SavedEventMessage;
+import sk.tuke.fei.hasak.entereventsservice.kafka.MessageDeleted;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class KafkaProducerConfig {
     private String bootstrapAddress;
 
     @Bean
-    public ProducerFactory<String, SavedEventMessage> savedEventMessageProducerFactory() {
+    public ProducerFactory<String, MessageDeleted> deletedMessageProducerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -30,8 +30,8 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, SavedEventMessage> savedEventMessageKafkaTemplate() {
-        return new KafkaTemplate<>(savedEventMessageProducerFactory());
+    public KafkaTemplate<String, MessageDeleted> deletedtMessageKafkaTemplate() {
+        return new KafkaTemplate<>(deletedMessageProducerFactory());
     }
 
 }

@@ -9,8 +9,8 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import sk.tuke.fei.hasak.entereventsservice.exception.EventNotFoundException;
-import sk.tuke.fei.hasak.entereventsservice.kafka.SavedEventMessageProducer;
-import sk.tuke.fei.hasak.entereventsservice.kafka.SavedEventMessage;
+import sk.tuke.fei.hasak.entereventsservice.kafka.MessageDeletedProducer;
+import sk.tuke.fei.hasak.entereventsservice.kafka.MessageDeleted;
 import sk.tuke.fei.hasak.entereventsservice.model.Event;
 import sk.tuke.fei.hasak.entereventsservice.repository.EnterEventsRepository;
 
@@ -27,11 +27,11 @@ public class EnterEventsService {
 
     private final EnterEventsRepository eventsRepository;
 
-    private final SavedEventMessageProducer savedEventMessageProducer;
+    private final MessageDeletedProducer messageDeletedProducer;
 
-    public EnterEventsService(EnterEventsRepository eventsRepository, SavedEventMessageProducer savedEventMessageProducer) {
+    public EnterEventsService(EnterEventsRepository eventsRepository, MessageDeletedProducer messageDeletedProducer) {
         this.eventsRepository = eventsRepository;
-        this.savedEventMessageProducer = savedEventMessageProducer;
+        this.messageDeletedProducer = messageDeletedProducer;
     }
 
     /**
@@ -70,8 +70,6 @@ public class EnterEventsService {
 
         log.info("[Enter-event-service] Event with id: {} saved", savedEvent.getMessageId());
 
-        savedEventMessageProducer.sendSavedEventMessage(new SavedEventMessage(savedEvent.getMessageId(), savedEvent.getEmail(), savedEvent.getTime()));
-
         return savedEvent;
     }
 
@@ -104,6 +102,7 @@ public class EnterEventsService {
      */
     public void deleteById(long id) {
         log.info("[Enter-event-service] Event with id: {} deleted", id);
+        messageDeletedProducer.sendMessageDeleted(new MessageDeleted(id));
         eventsRepository.deleteById(id);
     }
 }

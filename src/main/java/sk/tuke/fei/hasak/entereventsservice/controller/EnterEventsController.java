@@ -26,6 +26,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
  *
  * @author Šimon Hašák
  */
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/enter-events")
 @RequiredArgsConstructor

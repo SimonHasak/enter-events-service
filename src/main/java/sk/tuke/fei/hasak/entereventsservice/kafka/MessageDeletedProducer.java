@@ -8,19 +8,19 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class SavedEventMessageProducer {
+public class MessageDeletedProducer {
 
-    private final KafkaTemplate<String, SavedEventMessage> kafkaTemplate;
+    private final KafkaTemplate<String, MessageDeleted> kafkaTemplate;
 
-    @Value("${kafka.topic.saved.event.message}")
+    @Value("${kafka.topic.message.deleted}")
     private String topic;
 
     @Autowired
-    public SavedEventMessageProducer(KafkaTemplate<String, SavedEventMessage> kafkaTemplate) {
+    public MessageDeletedProducer(KafkaTemplate<String, MessageDeleted> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendSavedEventMessage(SavedEventMessage event) {
+    public void sendMessageDeleted(MessageDeleted event) {
         log.info("[Enter events service] sending='{}'.", event);
         this.kafkaTemplate.send(topic, event);
     }
