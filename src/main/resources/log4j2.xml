@@ -29,9 +29,13 @@
             <AppenderRef ref="STDOUT"/>
 <!--            <AppenderRef ref="GELF"/>-->
         </Logger>
-        <Logger name="org.apache.kafka" level="WARN" additivity="false">
+<!--        <Logger name="org.apache.kafka" level="WARN" additivity="false">-->
+<!--            <AppenderRef ref="STDOUT"/>-->
+<!--&lt;!&ndash;            <AppenderRef ref="GELF"/>&ndash;&gt;-->
+<!--        </Logger>-->
+        <Logger name="org.apache.kafka.clients.consumer.ConsumerConfig" level="WARN" additivity="false">
             <AppenderRef ref="STDOUT"/>
-<!--            <AppenderRef ref="GELF"/>-->
+            <!--            <AppenderRef ref="GELF"/>-->
         </Logger>
 
     </Loggers>
